@@ -1,0 +1,38 @@
+<template>
+    <div>
+        <Layout>
+            <Header style="background:none;">Header</Header>
+            <Content>
+                <PageablePlayerList @pageTo="pageTo" :columnList="columnList" :dataList="playerList" :currentPage="currentPage" :pageSize="pageSize"
+                    :totalSize="totalSize"></PageablePlayerList>
+            </Content>
+        </Layout>
+    </div>
+</template>
+<script>
+    import api from '../../net/api.js';
+    import { pageableConst } from '../ext-components/constants.js';
+    import PagealbePlayerList from '../ext-components/pageable-player-list.vue'
+    export default {
+        data() {
+            return {
+                columnList: [],
+                playerList: [],
+                currentPage: pageableConst.currentPage,
+                pageSize: pageableConst.pageSize,
+                totalSize: pageableConst.totalSize,
+                currentSize: pageableConst.currentSize,
+                timer4syncPlayerList: null
+            };
+        },
+        components: {
+            PagealbePlayerList
+        },
+        methods: {
+            pageTo() {
+
+            }
+        }
+    }
+</script>
+
