@@ -246,6 +246,14 @@ export const appRouter = [
                 icon: 'crop',
                 permissionId: permissions.all.PLAYER_CONTROL_KUAILE30.id,
                 component: () => import('@/views/game-player/kuaile30.vue')
+            },
+            {
+                title: '搜索玩家',
+                path: 'player-control-search',
+                name: 'player-control-search',
+                icon: 'crop',
+                //permissionId: permissions.all.PLAYER_CONTROL_SEARCH.id,
+                component: ()=> import('@/views/game-player/search.vue')
             }
         ]
     },

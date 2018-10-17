@@ -60,6 +60,7 @@ export default {
     },
     methods: {
         handleSubmit () {
+           
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
                     var param = {
@@ -68,9 +69,11 @@ export default {
                     }
                     api.postData(this, api.URL.Login, param, accountInfo => {
                         this.$store.commit('login', accountInfo)
+                        
                         this.$router.push({
                             name: 'home_index'
                         });
+                        
                     })
                 }
             });

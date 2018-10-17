@@ -50,6 +50,7 @@
             for (let i = 0; i < fishColumns.length; i++) {
                 cols.push(fishColumns[i])
             }
+            
             cols.splice(11, 0, {
                 title: '备注',
                 key: 'remark',
@@ -81,6 +82,7 @@
                                     on: {
                                         click: () => {
                                             let p = this.pageParams.dataList[index];
+                                            console.log(p);
                                             let _this= this;
                                             util.confirm(this, '确定将 <b>' + p.userName + '</b> 踢下线?', () => {
                                                 api.postData(_this, api.URL.KickUser, {userId: p.userId},
@@ -184,10 +186,10 @@
             this.pageParams.sortTo= this.getPlayerInfo;
             
             this.getPlayerInfo();
-            if(this.timer4syncTableInfo== null){
-                // let timer4syncTableInfo= setInterval(this.getPlayerInfo, 1500); 
-                // this.timer4syncTableInfo= timer4syncTableInfo;
-            }
+             if(this.timer4syncTableInfo== null){
+                  let timer4syncTableInfo= setInterval(this.getPlayerInfo, 1500); 
+                  this.timer4syncTableInfo= timer4syncTableInfo;
+             }
         },
         beforeDestroy() {
             console.log('beforeDestroy')
@@ -296,6 +298,7 @@
                         let url= api.URL.Fishing_Update_Monitor();
                         let _this= this;
                         api.postData(this, url, this.editForm, function(data){
+                            console.log(data);
                             if(data){
                                 alert("成功");
                             }else {
@@ -367,7 +370,8 @@
             getPlayerInfo(){
                 let _this = this
                     let url= api.URL.Fishing_Player_List(this.pageParams.currentPage, this.pageParams.pageSize, this.pageParams.orderByDesc, this.pageParams.orderByField);
-                    api.getData(this, url, function (data) {
+                    api.getData(_this, url, function (data) {
+                        
                         let datas= data.datas;
                         for (let index = 0; index < datas.length; index++) {
                             let playerInfo= datas[index];
@@ -379,7 +383,6 @@
                             }
                         }
                         //TODO palmava:测试
-                        datas= [{userId: 1, remark: '尝试', userName: 'song', isMoniting: true, ip:'3243', rewardRate: 1.0, executeWinLoss: 1}]
                        _this.pageParams.dataList = datas;
                         _this.pageParams.currentPage= data.pageNum;
                         _this.pageParams.totalSize= data.total;
@@ -387,7 +390,12 @@
                         if(data.size== 0&& _this.pageParams.currentPage!= 1){
                             _this.pageParams.currentPage= 1;
                             // m.getPlayerInfo();
+                            
                         }
+                        // _this.pageParams.dataList = [{
+                        //     userName:"test",
+                        //     userId:"20"
+                        // }]
                     });
             }
         }

@@ -38,7 +38,7 @@ const ajaxUrl = env === 'development'
 util.ajax = axios.create({
     baseURL: ajaxUrl,
     timeout: 30000,
-    withCredentials: true
+    withCredentials: true //是否携带cookie信息
 });
 
 util.ajax.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';

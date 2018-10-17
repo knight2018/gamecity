@@ -9,7 +9,7 @@ const PF_GAME_CONTROL_MING_PAI = '/player-control/mpqz';
 const PF_GAME_CONTROL_DOU_DI_ZHU = '/player-control/tddz';
 const PF_GAME_CONTROL_MINGCHE = '/game-control/car';
 const PF_GAME_CONTROL_FISHING = '/game-control/fishing';
-
+const PF_GAME_CONTROL_SEARCH = '/game/query-online-user-by-id'
 let api = {}
 
 api.URL = {
@@ -85,7 +85,11 @@ api.URL = {
         return String.format('/game-control/fishing/update-monitor');
     },
     Fishing_Player_List: function (currentPage, pageSize, orderByDesc, orderByField) {
-        return String.format('{0}/query-online-users?pageNum={1}&pageSize={2}&orderByDesc={3}&orderByField={4}', PF_GAME_CONTROL_FISHING, currentPage, pageSize, orderByDesc, orderByField);
+        return `${PF_GAME_CONTROL_FISHING}/query-online-users?pageNum=${currentPage}&pageSize=${pageSize}&orderByDesc=${orderByDesc}&orderByField=${orderByField}`
+        //String.format('{0}/query-online-users?pageNum={1}&pageSize={2}&orderByDesc={3}&orderByField={4}', PF_GAME_CONTROL_FISHING, currentPage, pageSize, orderByDesc, orderByField);
+    },
+    Search_Player_Id: function(userId){
+        return `${PF_GAME_CONTROL_SEARCH}?userId=${userId}`
     },
     Stock_Query_MingPaiQiangZhuang: function () {
         return String.format('/stock-module/query-mpqz-stock');

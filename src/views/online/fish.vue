@@ -55,12 +55,12 @@
             }
         },
         methods: {
-                    getPlayerList(){
+                getPlayerList(){
                 let _this = this;
-                    let url= api.URL.Fishing_Player_List(this.params.currentPage, this.params.pageSize, this.params.orderByDesc, this.params.orderByField);
-                    api.getData(this, url, function (data) {
-                        let datas= data.datas;
-                        for (let index = 0; index < datas.length; index++) {
+                let url= api.URL.Fishing_Player_List(this.params.currentPage, this.params.pageSize, this.params.orderByDesc, this.params.orderByField);
+                api.getData(this, url, function (data) {
+                    let datas= data.datas;
+                    for (let index = 0; index < datas.length; index++) {
                             // let playerInfo= datas[index];
                             // let offline= playerInfo['offline'];
                             // if(offline== false){
@@ -68,16 +68,16 @@
                             // }else {
                             //     datas[index]['offline']= '离线';
                             // }
-                        }
-                        _this.params.dataList = datas;
-                        _this.params.currentPage= data.pageNum;
-                        _this.params.totalSize= data.total;
-                        _this.params.currentSize= data.size;
-                        if(data.size== 0&& _this.params.currentPage!= 1){
-                            _this.params.currentPage= 1;
+                    }
+                _this.params.dataList = datas;
+                _this.params.currentPage= data.pageNum;
+                _this.params.totalSize= data.total;
+                _this.params.currentSize= data.size;
+                if(data.size== 0&& _this.params.currentPage!= 1){
+                    _this.params.currentPage= 1;
                             // m.getTableInfo();
-                        }
-                    });
+                    }
+                });
             }
         }
 

@@ -18,9 +18,9 @@ export const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
-    console.log('beforeEach: ' + to.path)
-    console.log(to)
-    
+    // console.log('beforeEach: ' + to.path)
+    // console.log(to)
+    // console.log(router)
 
     if (router.app.$store !== undefined) {
         var isAuth = router.app.$store.state.user.isAuth
@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
             return
         }
         // next('/login')
-        console.log(router.app.$store)
+        // console.log(router.app.$store)
         
         var isLogin = router.app.$store.getters.isLogin
         if (!isLogin) {

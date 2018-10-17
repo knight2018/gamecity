@@ -49,7 +49,7 @@ const user = {
                 }
             }
             state.accountInfo = accountInfo
-            
+           //this.$store.commit('updateMenulist');
             // this._vm.$router.push({
             //     name: '/home'
             // });
@@ -70,7 +70,6 @@ const user = {
             if (theme) {
                 localStorage.theme = theme;
             }
-
             state.accountInfo = null
             // this._vm.$router.push({
             //     name: '/login'
