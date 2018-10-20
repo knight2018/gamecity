@@ -9,7 +9,9 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        isStarted: false
+        isStarted: false,
+        userId: "",
+        url:"",
     },
     mutations: {
         start (state) {
@@ -22,7 +24,13 @@ const store = new Vuex.Store({
                 title: '出错啦',
                 content: api.errorText(errorCode)
             })
-        }
+        },
+         setId (state,userId){
+             state.userId = userId;
+         },
+         setURL (state,url){
+             state.url = url;
+         }
     },
     actions: {
 

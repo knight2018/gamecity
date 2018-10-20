@@ -56,7 +56,7 @@ import get_this from '../../../libs/get_this';
               
                 if(this.value.length>=6){
                     if(this.value.length===6){
-                        console.log(that);
+                        
                         that.editForm.userId = this.value;
                         
                         if(that.timer4syncTableInfo !==null){
@@ -66,7 +66,7 @@ import get_this from '../../../libs/get_this';
                     }
                     that.getTableInfo();
                     that.timer4syncTableInfo = setInterval(that.getTableInfo,4000); 
-                    console.log(this.dataList) 
+                  
                 }
                 
             },

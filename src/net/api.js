@@ -78,11 +78,11 @@ api.URL = {
     SystemOperator_OpsLog_Query: function () {
         return String.format('/operation-module/query-operation-post');
     },
-    Fishing_Update_Remark: function () {
-        return String.format('/game-control/fishing/update-remark');
+    Fishing_Update_Remark: function (userId,remark) {
+        return `/game-control/fishing/update-remark?userId=${userId}&remark=${remark}`
     },
     Fishing_Update_Monitor: function () {
-        return String.format('/game-control/fishing/update-monitor');
+        return `/game-control/fishing/update-monitor`
     },
     Fishing_Player_List: function (currentPage, pageSize, orderByDesc, orderByField) {
         return `${PF_GAME_CONTROL_FISHING}/query-online-users?pageNum=${currentPage}&pageSize=${pageSize}&orderByDesc=${orderByDesc}&orderByField=${orderByField}`

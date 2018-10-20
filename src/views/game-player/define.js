@@ -465,7 +465,7 @@ export const searchColumns =[
     },
     {
         title: '当前状态',
-        key: 'offline',
+        key: 'isOnline',
         align:'center',
     },
     {
@@ -526,8 +526,9 @@ export const searchColumns =[
                         click: ()=>{
                             console.log(params);
                             get_this.col.userId = params.row.userId;
+                            get_this.col.$store.commit('setId',params.row.userId)
+                             console.log(get_this.col.$store.state.userId)
                             get_this.col.showMonitor();
-                            
                         }
                     }
                 },'监控')
@@ -544,7 +545,7 @@ export const searchColumns =[
     },
     {
         title: '执行输赢',
-        key: 'preform'
+        key: 'executeWinLoss'
     },
 
 ];

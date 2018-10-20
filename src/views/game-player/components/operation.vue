@@ -29,7 +29,7 @@ export default{
              kickOff (){
                  console.log(this.$parent.$parent.$parent.$parent.$parent.$parent.$parent)
                  console.log(get_this.col)
-                 if(get_this.col.params.data1[0].offline =="在线"){
+                 if(get_this.col.params.data1[0].isOnline =="在线"){
                     util.confirm(get_this.col,`确定将<b>${this.userName}</b>踢下线？`,()=>{
                      api.postData(get_this.col,api.URL.KickUser,{userId:this.userId},//this.$parent可能出bug
                          data =>{
@@ -42,7 +42,7 @@ export default{
                  })
                  }else{
                      util.confirm(get_this.col,`玩家已离线`,()=>{
-
+                         
                      })
                  }
                

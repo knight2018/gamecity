@@ -64,12 +64,13 @@
                                 // this.editForm.userId= row.userId;
                                 // this.editForm.rewardRate= row.rewardRate;
                                 // this.editForm.executeWinLoss= row.executeWinLoss;
+                                
                                 this.editForm.remark= row.remark;
                                 this.editForm.userId= row.userId;
                                 this.showUpdateRemark();
                             }
                         }
-                    }, row.remark);
+                    }, "备注");
                 }
             });
             cols.splice( 13, 0,{
@@ -113,9 +114,7 @@
                                     on: {
                                         click: () => {
                                             let m = this
-                                            let p= this.params.dataList[params.index];
-                                            this.userId= p.userId;
-                                            console.log(p);
+                                            this.editForm.userId = params.row.userId;
                                             m.showMonitor()
                                         }
                                     }
@@ -218,9 +217,9 @@
                         ]);
                     },
                     onOk: ()=> {  
-                        let url= api.URL.Fishing_Update_Remark();
+                        let url= api.URL.Fishing_Update_Remark(this.editForm.userId,this.editForm.remark);
                         let _this= this;
-                        api.postData(this, url, this.editForm, function(data){
+                        api.postData(this, url, function(data){
                             alert(data);
                             _this.editForm.remark= null;
                         }, function (error){
@@ -270,8 +269,8 @@
                         });
                     },
                     onCancel: ()=> {
-                       _this.editForm.rewardRate= null;
-                       _this.editForm.executeWinLoss= null; 
+                       this.editForm.rewardRate= null;
+                    
                     }
                 });
             },
@@ -308,13 +307,13 @@
                             _this.editForm.executeWinLoss= null;
                         }, function (error){
                             alert(error);
-                           _this.editForm.rewardRate= null;
+                          
                            _this.editForm.executeWinLoss= null;
                         });
                     },
                     onCancel: ()=> {
-                       _this.editForm.rewardRate= null;
-                       _this.editForm.executeWinLoss= null; 
+                       this.editForm.rewardRate= null;
+                       this.editForm.executeWinLoss= null; 
                     }
                 });
             },
@@ -324,37 +323,43 @@
                         return h('div', [
                             h('Input', {
                             props: {
-                                value: this.value,
+                                value: this.editForm.rewardRate,
                                 autofocus: true,
                                 placeholder: '个人胜率'
                             }, 
                             on: {
                                 'on-blur': o => {
-                                    this.winLossRate = o.target.value
+                                    this.editForm.rewardRate = o.target.value
                                 }
                             }
                             }),
                             h('span', {},'1%-100%'),
                             h('Input', {
                             props: {
-                                value: this.value,
+                                value: this.editForm.executeWinLoss ,
                                 autofocus: true,
                                 placeholder: '执行输赢'
                             },
                             on: {
                                 'on-blur': o => {
-                                    this.winLoss = o.target.value
+                                    this.editForm.executeWinLoss = o.target.value
                                 }
                             }})
                         ]
                         )
                     },
                 onOk: () => {
-                    api.postData(this, api.URL.DouDiZhu_Update_Player_Winloss, {userId: this.userId, winLossRate: this.winLossRate, winLoss: this.winLoss}, data => {
+                    let g = this.editForm
+                    let url = api.URL.Fishing_Update_Monitor()
+                    api.postData(this,url,g,data => {
                         // util.hideLoading(this)
                         // this.$Modal.remove()
                         console.log(data);
                     })
+                },
+                 onCancel:()=>{
+                    this.editForm.executeWinLoss = null;
+                    this.editForm.rewardRate = null;
                 }
                 })
             },

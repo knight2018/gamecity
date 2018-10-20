@@ -10,7 +10,7 @@
     import {searchColumns} from './define.js';
     import util from '../../libs/util';
     import api from '../../net/api.js';
-    import searchMonitor from './components/monitor.vue'
+    import monitorCom from '../../../src/template/monitor/monitor-com.vue'
     export default {
         components:{PageablePlayerList},
         name:'player-control-search',
@@ -25,12 +25,61 @@
                     userId: null,
                     rewardRate: null,
                     executeWinLoss: null,
-                    remark: null
-  
+                    remark: null,       
                 },
+                proMonitor:[
+                    {
+                         id:"mingpai",
+                         name:"明牌抢庄",
+                         boolean: true,
+                         url:{
+                             get: "post",
+                             location:api.URL.MingPai_Update_Player_Winloss,
+                             params:{
+                                 winLossRate:null,
+                                 winLoss:null
+                             }
+                         }
+
+                     },
+                     {
+                         id:"doudizhu",
+                         name:"斗地主",
+                         boolean: false,
+                         url:{
+                             get: "post",
+                             location:api.URL.DouDiZhu_Update_Player_Winloss,
+                             params:{
+                                 winLossRate:null,
+                                 winLoss:null
+                             }
+                         }
+                     },
+                     {
+                         id:"fish",
+                         name:"深海捕鱼",
+                         boolean: false,
+                         url:{
+                             get: "post",
+                             location:api.URL.Fishing_Update_Monitor(),
+                             params:{
+                                 rewardRate:null,
+                                 executeWinLoss:null
+                             }
+                         }
+                     }
+                ],
+                val:{
+                    win:0,
+                    execute: 0,
+                    setValueMap: null
+                },
+                url: null,
                 winLossRate:null,
                 winLoss:null,
                 userId: null,
+                rewardRate:null, //捕鱼接口参数
+                executeWinLoss:null,
                 timer4syncTableInfo: null //4秒刷新一次数据
             }
         },
@@ -43,14 +92,16 @@
                 api.getData(this,url,function(data){
                     if(data.data){
                         let datas = data.data;
-                           if(datas.offline !== false){
-                               datas['offline'] = '离线';
+                           if(datas.isOnline == false){
+                               datas['isOnline'] = '离线';
                            }else{
-                               datas['offline'] = '在线';
+                               datas['isOnline'] = '在线';
                            }
                            datas.gameId = searchGame(datas.gameId)
                           _this.params.data1 = [datas];
-                        console.log(_this.$children.dataList)
+                          _this.val.setValueMap = datas.setValueMap;
+                          
+                        console.log(data)
                     }
                     
                 }
@@ -97,6 +148,10 @@
             },
             showMonitor (){
                 let that = this;
+                if(this.val.setValueMap['30001']){
+                    that.val.win = this.val.setValueMap['30001'].winLossRate;
+                    that.val.execute = this.val.setValueMap['30001'].executeWinLoss
+                }
                 this.$Modal.confirm({
                     render: (h,params) =>{
                         console.log(params)
@@ -116,7 +171,12 @@
                                     lineHeight:'25px'
                                 }
                             },`备注：${that.params.data1.remark||''}`),
-                            h(searchMonitor,{})
+                            h(monitorCom,{
+                                props:{
+                                    goodluck:this.proMonitor,
+                                    val:this.val
+                                }
+                            })
                             // h('Input',{
                             //     props:{
                             //         value:this.value,
@@ -146,9 +206,14 @@
                         ])
                     },
                      onOk: ()=>{
-                         api.postData(this,api.URL.DouDiZhu_Update_Player_Winloss,{userId:this.userId,winLossRate:this.winLossRate,winLoss:this.winLoss},data =>{
-                             console.log(data);
+                         api.postData(this,this.$store.state.url,data =>{
+                             console.log(this.params.data1);
                          })
+                     },
+                     onCancel: ()=>{
+                         this.val.win = 0;
+                         this.val.execute = 0;
+                         this.$store.commit('setURL','');
                      }
                 })
             }
@@ -164,7 +229,7 @@
             console.log(navigator); 
         },
         beforeDestroy() {
-            
+
             if(this.timer4syncTableInfo !==null){
                 clearInterval(this.timer4syncTableInfo)
             }
