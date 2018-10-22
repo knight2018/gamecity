@@ -99,13 +99,10 @@
                            }
                            datas.gameId = searchGame(datas.gameId)
                           _this.params.data1 = [datas];
-                          _this.val.setValueMap = datas.setValueMap;
-                          
-                        console.log(data)
+                          _this.val.setValueMap = datas.setValueMap;           
+                        console.log(_this)
                     }
-                    
                 }
-               
                 )
 
             },
@@ -127,7 +124,6 @@
                                 }
                             })
                         ]);
-                       
                     },
                      onOk: ()=>{
                          let url=api.URL.Fishing_Update_Remark(),
@@ -206,7 +202,22 @@
                         ])
                     },
                      onOk: ()=>{
-                         api.postData(this,this.$store.state.url,data =>{
+                        let data = this.$store.state.data,
+                            arr = Object.keys(data);
+                        let params = {};
+                        if(arr.length !== 0){
+                            params.userId = this.$store.state.userId;
+                            for (const key in data) {
+                                if (data.hasOwnProperty(key)) {
+                                    if(data[key]){
+                                        params[key] = data[key];
+                                    }
+                                }
+                            }
+                        } //vuex里面不支持结构赋值，bug原因babel转换器为es2015，头铁可以试下解决方法；安装stage2 or babel-plugin-transform-object-rest-spread
+                         console.log(this.$store.state.url)
+                         console.log(params);
+                         api.postData(this,this.$store.state.url,params,data =>{
                              console.log(this.params.data1);
                          })
                      },
@@ -214,6 +225,8 @@
                          this.val.win = 0;
                          this.val.execute = 0;
                          this.$store.commit('setURL','');
+                         this.$store.commit('setData',{});
+                         //取消之后将之前所做全部操作归0
                      }
                 })
             }

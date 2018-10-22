@@ -12,6 +12,12 @@ const store = new Vuex.Store({
         isStarted: false,
         userId: "",
         url:"",
+        data:{
+            winLossRate: "",
+            winLoss: "",
+            rewardRate: "",
+            executeWinLoss: ""
+        },
     },
     mutations: {
         start (state) {
@@ -30,8 +36,17 @@ const store = new Vuex.Store({
          },
          setURL (state,url){
              state.url = url;
-         }
-    },
+         },
+         setData (state,winData){
+             console.log(winData)
+                state.data.winLossRate = winData.winLossRate||"";
+                state.data.winLoss = winData.winLoss||"";
+                state.data.rewardRate = winData.rewardRate||"";
+                state.data.executeWinLoss = winData.executeWinLoss||"";
+             }
+             
+         },
+   
     actions: {
 
     },

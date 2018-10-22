@@ -58,7 +58,7 @@ export default {
     },
     
    created() {
-       
+       console.log(this)
    },
     methods: {
         handleRemove (){
@@ -85,7 +85,8 @@ export default {
         handleExecute (value){
             get_this.monitor.setUrl();
         },
-    }
+    },
+ 
 }
 </script>
 
@@ -94,7 +95,6 @@ export default {
         border-bottom: 1px solid #959595;
     }
     .col-list{
-       
         text-align: center;
         height: 30px;
         line-height: 30px;
