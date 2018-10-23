@@ -105,7 +105,8 @@ export default {
     },
     beforeDestroy() {
         this.gameList.boolean = false;
-        get_this.col.proMonitor[0].boolean = true;//确保重新打开，选择项在第一个
+        get_this.monitorCom.goodluck[0].boolean = true;//确保重新打开，选择项在第一个
+        console.log(get_this.monitorCom)
     },
 }
 </script>

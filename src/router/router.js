@@ -254,6 +254,14 @@ export const appRouter = [
                 icon: 'crop',
                 //permissionId: permissions.all.PLAYER_CONTROL_SEARCH.id,
                 component: ()=> import('@/views/game-player/search.vue')
+            },
+            {
+                title: '备注分类',
+                path: 'player-control-remark',
+                name: 'player-control-remark',
+                icon: 'crop',
+                //permissionId: permissions.all.PLAYER_CONTROL_REMARK.id,
+                component: ()=> import('@/views/game-player/remark.vue')
             }
         ]
     },

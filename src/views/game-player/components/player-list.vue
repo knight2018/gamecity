@@ -16,10 +16,13 @@
 export default {
     name: 'game-control-player-list',
     props: {
-        columnList: Array,
-        dataList: {
+        columnList:{
             type: Array,
-            default: []
+            default: ()=>[]
+        },
+        dataList:{
+            type: Array,
+            default: ()=>[]
         }
     },
 

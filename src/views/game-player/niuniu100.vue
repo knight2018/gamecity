@@ -124,6 +124,10 @@
                         console.log(data);
                     })
                 },
+                onCancel:()=>{
+                    this.winLoss = 0;
+                    this.winLossRate = 0;
+                }
                 })
             },
             getMonitorState(state) {

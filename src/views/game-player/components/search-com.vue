@@ -22,7 +22,7 @@
             <Table :columns="columns1" :data="data1" :no-data-text="dataText"></Table>
         </div>
         <div class="search">
-            <Input  class="border-blue" type="text" icon="ios-search" v-model="value" placeholder="请输入7位ID" style="width:200px" @on-click="handleSearch" @on-change="judge" size="large"></Input>
+            <Input  class="border-blue" type="text" icon="ios-search" v-model="value" placeholder="请输入7位ID" style="width:200px" @on-click="handleSearch" @on-change="judge" size="large" @on-enter="handleSearch"></Input>
             <Button class="border" :disabled="btn" @click="handleSearch" size="large">搜索</Button>
         </div>
     </Row>

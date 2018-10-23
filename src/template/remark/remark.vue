@@ -7,7 +7,7 @@
                 :key="item.id"
                 :class="{background:item.boolean}"
                 @click.native="handleRemove()">
-                <monitorList :gameList="item" :val="val"></monitorList>
+                <remarkList :gameList="item" :val="val"></remarkList>
             </Col>
             
         </Row>
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import monitorList from '../../../src/template/monitor/monitorList';
+import remarkList from './remarkList'
 import get_this from '../../libs/get_this.js'
 export default {
-    name: "monitor-com",
+    name: "remark",
     components:{
-        monitorList
+        remarkList
     },
     props: {
         goodluck:{
@@ -51,7 +51,7 @@ export default {
                 return {
                     win: 0,
                     execute: 0,
-                    setValueMap: null
+                    gameId: null
                 }
             }
         } 

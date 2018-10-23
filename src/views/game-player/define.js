@@ -549,3 +549,49 @@ export const searchColumns =[
     },
 
 ];
+export const remarkColumnsList =[
+    {
+        title: "玩家昵称",
+        key: "userName",
+        align: "center"
+    },
+    {
+        title: "玩家ID",
+        key: "userId",
+        align: "center"
+    },
+    {
+        title: "总充值",
+        key: "totalCharge",
+        align: "center"
+    },
+    {
+        title: "玩家状态",
+        key: "office",
+        align: "center"
+    },
+    {
+        title: "备注分类",
+        key: "remark",
+        align: "center",
+        filters: [
+            {
+                label: "label1",
+                value: 1
+            },
+            {
+                label: "label2",
+                value: 2
+            }
+        ],
+        filterMultiple: false,
+        filterMethod (value,row){
+            console.log(value,row)
+            if(value===1){
+                return row.remark = value;
+                
+            }
+        }
+    },
+    
+]

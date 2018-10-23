@@ -128,11 +128,11 @@
                      onOk: ()=>{
                          let url=api.URL.Fishing_Update_Remark(),
                          _this = this;
-                         api.postData(this,url,this.editForm,function(data){
-                             alter(data);
-                             _this.editForm.remark = null;
+                         api.postData(this,url,{userId:_this.editForm.userId,remark:_this.editForm.remark},function(data){
+                            console.log(data);
+                            
                          },function(error){
-                             alter(error);
+                            
                              _this.editForm.remark = null;
                          }
                          )   
