@@ -450,6 +450,17 @@ export const appRouter = [
         children: [
             { path: 'list', title: '账号管理', name: 'account-list', icon: 'compose', component: () => import('@/views/account/account-list.vue') },
         ]
+    },
+    {
+        title: '代理管理',
+        path: '/agency',
+        name: 'agency',
+        icon: 'android-checkbox',
+        //permissionId: permissions.all.AGENCY.id,
+        component: Main,
+        children: [
+            { path: 'list', title: '代理管理', name: 'agency-list', icon: 'compose', component: () => import('@/views/agency/agency.vue') },
+        ]
     }
 ];
 

@@ -4,7 +4,8 @@ import Vuex from 'vuex';
 import app from './modules/app';
 import user from './modules/user';
 import api from '../net/api'
-
+import market from './modules/market'
+import component from './modules/component'
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -48,11 +49,15 @@ const store = new Vuex.Store({
          },
    
     actions: {
-
+        test ({commit,state},params){
+            console.log(params);
+        }
     },
     modules: {
         app,
-        user
+        user,
+        market,
+        component
     }
 });
 

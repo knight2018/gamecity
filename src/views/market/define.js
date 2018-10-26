@@ -17,17 +17,20 @@ export const marketColumns = [
     {
         'title': '新增账号',
         'key': 'newAccount',
-        'sortable': true
+        'sortable': true,
+        className:'colorRed'
     },
     {
         'title': '首冲人数',
         'key': 'newChargeUserCount',
-        'sortable': true
+        'sortable': true,
+        className:'colorRed'
     },
     {
         'title': '充值人数',
         'key': 'chargeUserCount',
-        'sortable': true
+        'sortable': true,
+        className:'colorRed'
     },
     {
         'title': '充值金额',

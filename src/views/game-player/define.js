@@ -460,7 +460,7 @@ export const searchColumns =[
                         get_this.col.showUpdataRemark();
                      }
                 }
-             },'备注')
+             },row.remark||'备注')
          }
     },
     {

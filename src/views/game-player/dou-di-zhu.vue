@@ -2,6 +2,7 @@
     <div>
         <div >
             <PageablePlayerList :params="params"></PageablePlayerList>
+            
         </div>
     </div>
 </template>
@@ -13,7 +14,7 @@
     import { douDiZhuPlayerColumns } from './define'
     import PageablePlayerList from '../ext-components/pageable-player-list.vue'
     import {pageableConst} from  '../ext-components/constants.js'
-
+   
     export default {
         components: { PageablePlayerList},
         name: 'ddz-player-control',

@@ -11,6 +11,7 @@
     import util from '../../libs/util';
     import api from '../../net/api.js';
     import monitorCom from '../../../src/template/monitor/monitor-com.vue'
+    import {mapActions} from "vuex";
     export default {
         components:{PageablePlayerList},
         name:'player-control-search',
@@ -85,6 +86,7 @@
         },
     
         methods:{
+           
             getTableInfo (){
                 let _this = this,
                     url = api.URL.Search_Player_Id(this.editForm.userId);
@@ -238,6 +240,7 @@
             // console.log(columnsList)
             // columnsList.splice(11,0)
             // this.params.columns1 = columnsList;
+            
              get_this.get(this,"col") 
             console.log(navigator); 
         },
