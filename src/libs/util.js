@@ -19,9 +19,9 @@ util.isDebug = env !== 'production';
 //         ? 'http://192.168.1.182:7666'
 //         : 'https://debug.url.com';
 const ajaxUrl = env === 'development'
-    ? 'http://192.168.1.119:7666'
+    ? 'http://192.168.1.181:7666'
     : env === 'production'
-        ? 'http://192.168.1.119:7666'
+        ? 'http://192.168.1.181:7666'
         : 'https://debug.url.com';
 // //
 // const ajaxUrl = env === 'development'

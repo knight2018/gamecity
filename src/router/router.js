@@ -461,6 +461,94 @@ export const appRouter = [
         children: [
             { path: 'list', title: '代理管理', name: 'agency-list', icon: 'compose', component: () => import('@/views/agency/agency.vue') },
         ]
+    },
+    {
+        title: '数据分析',
+        path: '/dataAnalysis',
+        name: 'dataAnalysis',
+        icon: 'android-checkbox',
+        //permissionId: permissions.all.dataAnalysis.id,
+        component: Main,
+        children:[
+            {
+                title: "实时数据",
+                path: 'realtime',
+                name: "realtime",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/realtime')
+            },
+            {
+                title: "新增玩家",
+                path: 'addPlayer',
+                name: "addPlayer",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/addPlayer')
+            },
+            {
+                title: "活跃玩家",
+                path: 'activePlayer',
+                name: "activePlayer",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/activePlayer')
+            },
+            {
+                title: "付费分析",
+                path: 'pay',
+                name: "pay",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/pay')
+            },
+            {
+                title: "留存分析（总）",
+                path: 'analysisTotal',
+                name: "analysisTotal",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/analysisTotal')
+            },
+            {
+                title: "百人牛牛留存分析",
+                path: 'niuniuAnalyze',
+                name: "niuniuAnalyze",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/niuniuAnalyze')
+            },
+            {
+                title: "明牌抢庄留存分析",
+                path: 'mingpaiAnalyze',
+                name: "mingpaiAnalyze",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/mingpaiAnalyze')
+            },
+            {
+                title: "快乐30秒留存分析",
+                path: 'happyAnalyze',
+                name: "happyAnalyze",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/happyAnalyze')
+            },
+            {
+                title: "二人斗地主分析",
+                path: 'doudizhuAnalyze',
+                name: "doudizhuAnalyze",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/doudizhuAnalyze')
+            },
+            {
+                title: "名车汇留存分析",
+                path: 'mingcheAnalyze',
+                name: "mingcheAnalyze",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/mingcheAnalyze')
+            },
+            {
+                title: "深海捕鱼分析",
+                path: 'fishAnalyze',
+                name: "fishAnalyze",
+                icon: 'compose',
+                component: ()=>import('@/views/dataAnalysis/fishAnalyze')
+            },
+            
+        ]
     }
 ];
 
